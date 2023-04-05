@@ -5,19 +5,31 @@ import chevron from '../../images/chevronD.svg';
 
 const Header = () => {
     return (
-        <header className="header navigation">
+        <header className = 'header navigation'>
             <div className = 'logo'>
                 Awesome Kanban Board
             </div>
-            <div>
-                <img 
-                    src = {pfp} 
-                    alt = 'profile avatar' 
-                />
-                <img 
-                    src = {chevron} 
-                    alt = 'open profile' 
-                />
+            <div className = 'profile'>
+                <button className = 'profile-button'>
+                    <img 
+                        src = {pfp} 
+                        alt = 'profile avatar' 
+                    />
+                    <img 
+                        src = {chevron} 
+                        alt = 'open profile' 
+                    />
+                </button>
+                <div className = 'profile-dropdown'>
+                    <ul>
+                        <li>
+                            Profile
+                        </li>
+                        <li>
+                            Log Out
+                        </li>
+                    </ul>
+                </div>
             </div>
         </header>
     )

@@ -7,3 +7,22 @@
     margin-left: 20px;
     margin-top: 10px;
 }
+
+.profile {
+    position: relative;
+}
+
+.profile-button {
+    margin-right: 22px;
+    margin-top: 6px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-dropdown{
+    background-color: #FFF;
+    color: #000;
+    font-size: 14px;
+}
