@@ -9,7 +9,8 @@ function App() {
     <div className="App">
       <Header />
       <main className = 'card-wrapper'>
-        <CardBlock cardname = 'Backlog' />
+        <CardBlock cardname = 'Backlog'>
+        </CardBlock>
         <CardBlock cardname = 'Ready' />
         <CardBlock cardname = 'In Progress' />
         <CardBlock cardname = 'Finished' />
