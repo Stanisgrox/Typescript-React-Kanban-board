@@ -1,0 +1,13 @@
+.card-block {
+    margin-right: 24px;
+    background-color: #EBECF0;
+    color: #000;
+    border-radius: 10px;
+    font-size: 18px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    margin-top: 20px;
+    margin-left: 19px;
+    width: 22vw;
+    min-width: 282px;
+}

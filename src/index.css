@@ -23,7 +23,11 @@ body {
   color: #FFFFFF;
 }
 
-main {
+.card-wrapper{
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   background-color: #0079BF;
   width: 100vw;
   height: calc(100vh - 110px);
