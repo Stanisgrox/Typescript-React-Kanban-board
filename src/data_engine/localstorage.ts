@@ -1,10 +1,16 @@
 const ID_LIMIT = 1000;
 
+const storageStartup = () => {
+    if (localStorage.getItem('setted')) return
+    localStorage.setItem('setted','true');
+    localStorage.setItem('backlog','[]')
+    localStorage.setItem('ready', '[]');
+    localStorage.setItem('in progress', '[]');
+    localStorage.setItem('finished', '[]');
+}
+
 
 const mockWriter = () =>{
-    localStorage.setItem('ready', '[2]');
-    localStorage.setItem('in progress', '[3]');
-    localStorage.setItem('finished', '[4]');
     cardCreator('new card');
 }
 
@@ -25,4 +31,4 @@ const cardCreator = (name:string) => {
     localStorage.setItem('backlog', JSON.stringify(keyDatabase))
 }
 
-export default mockWriter;
+export {mockWriter, storageStartup};

@@ -2,9 +2,12 @@ import React from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import CardBlock from './components/card-block/card-block';
+import * as storage from './data_engine/localstorage';
 
 
 function App() {
+  //Функция для первоначальной настройки localstorage
+  storage.storageStartup();
   return (
     <div className="App">
       <Header />

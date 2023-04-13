@@ -1,6 +1,6 @@
 import React from 'react';
 import './card-block.css';
-import mockWriter from '../../data_engine/localstorage';
+import * as storage from '../../data_engine/localstorage';
 
 interface CardBlockProps {
     cardname: string
@@ -13,7 +13,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
     let button: JSX.Element;
 
     if (props.cardname.toLowerCase() === 'backlog'){
-        button = <button onClick={mockWriter}>
+        button = <button onClick={storage.mockWriter}>
             {BUTTON_TEXT}
         </button>
     }
