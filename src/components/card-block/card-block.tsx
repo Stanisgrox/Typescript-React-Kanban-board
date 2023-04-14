@@ -14,6 +14,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
     let PostButton: JSX.Element;
     let PrepareButton: JSX.Element
     let buttonRole = props.cardname.toLocaleLowerCase();
+    let inputdisplay = true;
 
     PrepareButton = 
         <button 
@@ -38,7 +39,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
             <div className = 'card-canvas'>
                 {props.children}
             </div>
-            <input className = 'card-name-input task-card' placeholder='Enter task name'/>
+            <input className = 'card-name-input task-card' placeholder='Enter task name' />
             {PrepareButton}
         </div>
     )

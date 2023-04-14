@@ -1,3 +1,9 @@
+import { FIRST_COLOUMN } from "../App";
+import { SECOND_COLOUMN } from "../App";
+import { THIRD_COLOUMN } from "../App";
+import { FOURTH_COLOUMN } from "../App";
+import { Cards } from "../App";
+
 const ID_LIMIT = 1000;
 
 
@@ -5,33 +11,33 @@ const ID_LIMIT = 1000;
 const storageStartup = () => {
     if (localStorage.getItem('setted')) return
     localStorage.setItem('setted','true');
-    localStorage.setItem('backlog','[]')
-    localStorage.setItem('ready', '[]');
-    localStorage.setItem('in progress', '[]');
-    localStorage.setItem('finished', '[]');
+    localStorage.setItem(FIRST_COLOUMN.toLowerCase(),'[]')
+    localStorage.setItem(SECOND_COLOUMN.toLowerCase(), '[]');
+    localStorage.setItem(THIRD_COLOUMN.toLowerCase(), '[]');
+    localStorage.setItem(FOURTH_COLOUMN.toLowerCase(), '[]');
 }
 
 
 const buttonHandler = (event: React.MouseEvent<HTMLElement>) =>{ 
     const buttonRole = (event.target as HTMLButtonElement).getAttribute('data-role');
     switch (buttonRole) {
-        case 'backlog':
+        case FIRST_COLOUMN.toLowerCase():
             cardCreator('new card');
         break;
-        case 'ready':
+        case SECOND_COLOUMN.toLowerCase():
             alert('ready');
         break;
-        case 'in progress':
+        case THIRD_COLOUMN.toLowerCase():
             alert('in progress');
         break;
-        case 'finished':
+        case FOURTH_COLOUMN.toLowerCase():
             alert('finished');
         break;
     }
 }
 
 //Функция для записи  карточки
-const cardCreator = (name:string) => {
+const cardCreator = (name: string) => {
     //Последовательные ID не безопасны, поэтому генерируется случайное число.
     let newId = Math.floor(Math.random()*ID_LIMIT);
     //Если этот ID уже встречается, то генерируется новое число.
@@ -42,10 +48,25 @@ const cardCreator = (name:string) => {
     localStorage.setItem(newId.toString(),'{"name": "' + name +'", "description": "This task has no description"}');
 
     //В массив ID карточек backlog записывается ID новой карточки
-    let keyDatabase = JSON.parse(localStorage.getItem('backlog') || '{}');
+    let keyDatabase = JSON.parse(localStorage.getItem(FIRST_COLOUMN.toLowerCase()) || '{}');
     keyDatabase.push(newId);
-    localStorage.setItem('backlog', JSON.stringify(keyDatabase))
+    localStorage.setItem(FIRST_COLOUMN.toLowerCase(), JSON.stringify(keyDatabase))
 }
+
+const arrayBuilder = (name: string) => {
+    let string: string;
+    string = localStorage.getItem(name) || '';
+    string = string?.replace('[','');
+    string = string?.replace(']','');
+    let array = string.split(',');
+    return array;
+}
+
+const prepareCards = (colName: string) => {
+    let array_of_indexes = arrayBuilder(colName);
+    return array_of_indexes;
+}
+
 
 /*
 const cardMover = (from:string, cardId:number) => {
@@ -53,4 +74,4 @@ const cardMover = (from:string, cardId:number) => {
 }
 */
 
-export {storageStartup, buttonHandler};
+export {storageStartup, buttonHandler, prepareCards};

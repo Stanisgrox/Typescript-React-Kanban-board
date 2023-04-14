@@ -1,12 +1,26 @@
 import React from 'react';
 import './task-card.css';
 
-const TaskCardWrapper = () => {
+interface Props {
+    cards: string[]
+}
+
+const TaskCardWrapper: React.FC<Props> = ({ cards }) => {
+
+    const renderCard = (): JSX.Element[] => {
+        return cards.map(card => {
+            let cardInfo = JSON.parse(localStorage.getItem(card) || '{}');
+            return (
+                <div className='task-card' key={card}>
+                    {cardInfo.name}
+                </div>
+            )
+        })
+    }
+
     return (
         <div>
-            <div className='task-card'>
-                Login page - perfomance issues
-            </div>
+            {renderCard()}
         </div>
     )
 }
