@@ -22,17 +22,6 @@ export const SECOND_COLOUMN = 'Ready';
 export const THIRD_COLOUMN = 'In Progress';
 export const FOURTH_COLOUMN = 'Finished';
 
-
-const arrayBuilder = (name:string) => {
-  let string: string;
-  string = localStorage.getItem(name) || '';
-  string = string?.replace('[','');
-  string = string?.replace(']','');
-  let array = string.split(',');
-  return array;
-}
-
-
 function App() {
   //Функция для первоначальной настройки localstorage
   storage.storageStartup();
