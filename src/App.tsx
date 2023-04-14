@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import CardBlock from './components/card-block/card-block';
+import TaskCardWrapper from './components/task-card/task-card';
 import * as storage from './data_engine/localstorage';
 
 
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <main className = 'card-wrapper'>
         <CardBlock cardname = 'Backlog'>
+          <TaskCardWrapper />
         </CardBlock>
         <CardBlock cardname = 'Ready' />
         <CardBlock cardname = 'In Progress' />

@@ -7,19 +7,30 @@ interface CardBlockProps {
     children?: React.ReactNode
 }
 
-const BUTTON_TEXT = '+ Add card'
+const POST_BUTTON_TEXT = 'Submit';
+const PREPARE_BUTTON_TEXT = '+ Add card';
 
 const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
-    let button: JSX.Element;
+    let PostButton: JSX.Element;
+    let PrepareButton: JSX.Element
+    let buttonRole = props.cardname.toLocaleLowerCase();
 
-    if (props.cardname.toLowerCase() === 'backlog'){
-        button = <button onClick={storage.mockWriter}>
-            {BUTTON_TEXT}
+    PrepareButton = 
+        <button 
+            onClick={storage.buttonHandler}
+            data-role = {buttonRole}
+            className = 'canvas-button'
+        >
+            {PREPARE_BUTTON_TEXT}
         </button>
-    }
-    else{
-        button = <button>{BUTTON_TEXT}</button>
-    }
+
+    PostButton = 
+        <button
+            data-role = {buttonRole}
+            className = 'canvas-button post-button'
+        >
+            {POST_BUTTON_TEXT}
+        </button>
 
     return (
         <div className='card-block'>
@@ -27,7 +38,8 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
             <div className = 'card-canvas'>
                 {props.children}
             </div>
-            {button}
+            <input className = 'card-name-input task-card' placeholder='Enter task name'/>
+            {PrepareButton}
         </div>
     )
 }

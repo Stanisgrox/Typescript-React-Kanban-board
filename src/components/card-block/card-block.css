@@ -13,3 +13,38 @@
     width: 22vw;
     min-width: 282px;
 }
+
+.canvas-button {
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #FFFFFF00;
+    border: none;
+    cursor: pointer;
+    color: #5E6C84;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: 12px;
+}
+
+.post-button {
+    background-color: #0079BF;
+    color: #FFF;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.card-name-input{
+    display: none;
+    border: none;
+    width: 95%;
+}
+
+.canvas-button:hover{
+    background-color: #FFF;
+}
+
+.post-button:hover{
+    background-color: #004f7c;
+}

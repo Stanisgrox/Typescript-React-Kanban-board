@@ -1,5 +1,7 @@
 const ID_LIMIT = 1000;
 
+
+//Функция первоначальной настройки localstorage
 const storageStartup = () => {
     if (localStorage.getItem('setted')) return
     localStorage.setItem('setted','true');
@@ -10,8 +12,22 @@ const storageStartup = () => {
 }
 
 
-const mockWriter = () =>{
-    cardCreator('new card');
+const buttonHandler = (event: React.MouseEvent<HTMLElement>) =>{ 
+    const buttonRole = (event.target as HTMLButtonElement).getAttribute('data-role');
+    switch (buttonRole) {
+        case 'backlog':
+            cardCreator('new card');
+        break;
+        case 'ready':
+            alert('ready');
+        break;
+        case 'in progress':
+            alert('in progress');
+        break;
+        case 'finished':
+            alert('finished');
+        break;
+    }
 }
 
 //Функция для записи  карточки
@@ -31,4 +47,10 @@ const cardCreator = (name:string) => {
     localStorage.setItem('backlog', JSON.stringify(keyDatabase))
 }
 
-export {mockWriter, storageStartup};
+/*
+const cardMover = (from:string, cardId:number) => {
+    
+}
+*/
+
+export {storageStartup, buttonHandler};
