@@ -14,11 +14,10 @@ const storageStartup = () => {
 }
 
 
-const buttonHandler = (event: React.MouseEvent<HTMLElement>) =>{ 
-    const buttonRole = (event.target as HTMLButtonElement).getAttribute('data-role');
+const buttonHandler = (buttonRole: string, cardName?:string) =>{ 
     switch (buttonRole) {
         case FIRST_COLOUMN.toLowerCase():
-            cardCreator('new card');
+            if(cardName)cardCreator(cardName);
         break;
         case SECOND_COLOUMN.toLowerCase():
             alert('ready');

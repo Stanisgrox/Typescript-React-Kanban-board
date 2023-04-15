@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import CardBlock from './components/card-block/card-block';
 import TaskCardWrapper from './components/task-card/task-card';
 import * as storage from './data_engine/localstorage';
 
-
+/*
 export interface Cards {
   card: {
     id: number,
@@ -14,7 +14,7 @@ export interface Cards {
     coloumn: string
   }[]
 }
-
+*/
 
 //Конфигурация - названия групп карточек.
 export const FIRST_COLOUMN = 'Backlog';
@@ -26,7 +26,7 @@ function App() {
   //Функция для первоначальной настройки localstorage
   storage.storageStartup();
   
-  const [cards, changeCards] = useState<Cards["card"]>([]);
+  //const [cards, changeCards] = useState<Cards["card"]>([]);
 
   return (
     <div className="App">

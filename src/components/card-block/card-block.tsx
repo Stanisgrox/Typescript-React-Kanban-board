@@ -26,8 +26,14 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
 
     PrepareButton = 
         <button 
-            onClick = {() => changeMode(!modeSwitch)}
-            data-role = {buttonRole}
+            onClick = {
+                () => {
+                    if (modeSwitch){
+                        storage.buttonHandler(buttonRole, 'mewCard');
+                    }
+                    changeMode(!modeSwitch); 
+                }
+            }
             className = {`canvas-button ${postButtonClass}`}
         >
             {modeSwitch ? POST_BUTTON_TEXT : PREPARE_BUTTON_TEXT}
