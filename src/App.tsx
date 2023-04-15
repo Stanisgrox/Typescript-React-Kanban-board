@@ -1,8 +1,8 @@
 import React from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
-import CardBlock from './components/card-block/card-block';
 import * as storage from './data_engine/localstorage';
+import MainRouter from './components/router/router';
 
 /*
 export interface Cards {
@@ -25,17 +25,10 @@ function App() {
   //Функция для первоначальной настройки localstorage
   storage.storageStartup();
   
-  //const [cards, changeCards] = useState<Cards["card"]>([]);
-
   return (
     <div className="App">
       <Header />
-      <main className = 'card-wrapper'>
-        <CardBlock cardname = {FIRST_COLOUMN} />
-        <CardBlock cardname = {SECOND_COLOUMN} />
-        <CardBlock cardname = {THIRD_COLOUMN} />
-        <CardBlock cardname = {FOURTH_COLOUMN} />
-      </main>
+      <MainRouter />
       <Footer active={1} finished={1} author = '<NAME>' year={2023} />
     </div>
   );

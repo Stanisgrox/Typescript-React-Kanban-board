@@ -1,0 +1,26 @@
+.task-wrapper{
+    background-color: #0079BF;
+    width: 100vw;
+    height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overview-card{
+    background-color: #FFF;
+    width: 95vw;
+    height: 78vh;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.overview-card-caption{
+    padding-left: 28px;
+    margin-top: 22px;
+}
+
+.overview-card-text{
+    padding-left: 30px;
+    margin-top: 35px;
+}

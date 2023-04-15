@@ -13,16 +13,19 @@ const PREPARE_BUTTON_TEXT = '+ Add card';
 
 const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
     const [modeSwitch, changeMode] = useState(false);
+    const [cardName, setName] = useState('');
 
     let PrepareButton: JSX.Element;
     let buttonRole = props.cardname.toLocaleLowerCase();
+    let currentInput: HTMLInputElement;
 
     PrepareButton = 
         <button 
             onClick = {
                 () => {
                     if (modeSwitch){
-                        storage.buttonHandler(buttonRole, 'mewCard');
+                        storage.buttonHandler(buttonRole, cardName);
+                        setName('');
                     }
                     changeMode(!modeSwitch); 
                 }
@@ -38,7 +41,17 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
             <div className = 'card-canvas'>
                 <TaskCardWrapper cards = {storage.prepareCards(props.cardname.toLowerCase())} />
             </div>
-            <input className = 'card-name-input task-card' placeholder='Enter task name' style={{display: modeSwitch ? 'block' : 'none'}} />
+            <input 
+                className = 'card-name-input task-card' 
+                placeholder='Enter task name' 
+                style={{display: modeSwitch ? 'block' : 'none'}}
+                id = {props.cardname}
+                value = {cardName}
+                onInput={e  => {
+                    currentInput = e.currentTarget;
+                    setName(currentInput.value)
+                }}
+            />
             {PrepareButton}
         </div>
     )

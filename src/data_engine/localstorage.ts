@@ -2,7 +2,6 @@ import { FIRST_COLOUMN, SECOND_COLOUMN, THIRD_COLOUMN, FOURTH_COLOUMN } from "..
 
 const ID_LIMIT = 1000;
 
-
 //Функция первоначальной настройки localstorage
 const storageStartup = () => {
     if (localStorage.getItem('setted')) return
@@ -12,7 +11,6 @@ const storageStartup = () => {
     localStorage.setItem(THIRD_COLOUMN.toLowerCase(), '[]');
     localStorage.setItem(FOURTH_COLOUMN.toLowerCase(), '[]');
 }
-
 
 const buttonHandler = (buttonRole: string, cardName?:string) =>{ 
     switch (buttonRole) {
@@ -64,6 +62,11 @@ const prepareCards = (colName: string) => {
     return array_of_indexes;
 }
 
+const getCardInfo  = (cardId: string) => {
+    let cardData = JSON.parse(localStorage.getItem(cardId) || '{}');
+    return cardData;
+}
+
 
 /*
 const cardMover = (from:string, cardId:number) => {
@@ -71,4 +74,4 @@ const cardMover = (from:string, cardId:number) => {
 }
 */
 
-export {storageStartup, buttonHandler, prepareCards};
+export {storageStartup, buttonHandler, prepareCards, getCardInfo};
