@@ -2,7 +2,6 @@ import React from 'react';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import CardBlock from './components/card-block/card-block';
-import TaskCardWrapper from './components/task-card/task-card';
 import * as storage from './data_engine/localstorage';
 
 /*
@@ -32,18 +31,10 @@ function App() {
     <div className="App">
       <Header />
       <main className = 'card-wrapper'>
-        <CardBlock cardname = {FIRST_COLOUMN} >
-          <TaskCardWrapper cards = {storage.prepareCards(FIRST_COLOUMN.toLowerCase())} />
-        </CardBlock>
-        <CardBlock cardname = {SECOND_COLOUMN}>
-          <TaskCardWrapper cards = {storage.prepareCards(SECOND_COLOUMN.toLowerCase())} />
-        </CardBlock>
-        <CardBlock cardname = {THIRD_COLOUMN}>
-          <TaskCardWrapper cards = {storage.prepareCards(THIRD_COLOUMN.toLowerCase())} />
-        </CardBlock>
-        <CardBlock cardname = {FOURTH_COLOUMN}>
-          <TaskCardWrapper cards = {storage.prepareCards(FOURTH_COLOUMN.toLowerCase())} />
-        </CardBlock>
+        <CardBlock cardname = {FIRST_COLOUMN} />
+        <CardBlock cardname = {SECOND_COLOUMN} />
+        <CardBlock cardname = {THIRD_COLOUMN} />
+        <CardBlock cardname = {FOURTH_COLOUMN} />
       </main>
       <Footer active={1} finished={1} author = '<NAME>' year={2023} />
     </div>
