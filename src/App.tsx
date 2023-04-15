@@ -25,15 +25,14 @@ export const FOURTH_COLOUMN = 'Finished';
 function App() {
   //Функция для первоначальной настройки localstorage
   storage.storageStartup();
-
-  const [makingCard, makeCard] = useState(false);
+  
   const [cards, changeCards] = useState<Cards["card"]>([]);
 
   return (
     <div className="App">
       <Header />
       <main className = 'card-wrapper'>
-        <CardBlock cardname = {FIRST_COLOUMN}>
+        <CardBlock cardname = {FIRST_COLOUMN} >
           <TaskCardWrapper cards = {storage.prepareCards(FIRST_COLOUMN.toLowerCase())} />
         </CardBlock>
         <CardBlock cardname = {SECOND_COLOUMN}>

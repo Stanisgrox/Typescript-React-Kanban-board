@@ -2,7 +2,6 @@ import { FIRST_COLOUMN } from "../App";
 import { SECOND_COLOUMN } from "../App";
 import { THIRD_COLOUMN } from "../App";
 import { FOURTH_COLOUMN } from "../App";
-import { Cards } from "../App";
 
 const ID_LIMIT = 1000;
 
@@ -53,6 +52,8 @@ const cardCreator = (name: string) => {
     localStorage.setItem(FIRST_COLOUMN.toLowerCase(), JSON.stringify(keyDatabase))
 }
 
+//Не смотря на то, что в LocalStorage записывается валидный массив, TypeScript не позволяет применять к нему методы работы с массивами
+//Потому программа обрабатывает массив в LocalStorage как строку
 const arrayBuilder = (name: string) => {
     let string: string;
     string = localStorage.getItem(name) || '';

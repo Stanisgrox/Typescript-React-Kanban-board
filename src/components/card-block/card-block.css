@@ -38,7 +38,7 @@
 .card-name-input{
     display: none;
     border: none;
-    width: 95%;
+    width: calc(100% - 16px);
 }
 
 .canvas-button:hover{

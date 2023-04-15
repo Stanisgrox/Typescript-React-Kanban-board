@@ -1,36 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './card-block.css';
 import * as storage from '../../data_engine/localstorage';
 
 interface CardBlockProps {
     cardname: string
-    children?: React.ReactNode
+    children: React.ReactNode
+    cardMakerState?:  boolean
 }
 
 const POST_BUTTON_TEXT = 'Submit';
 const PREPARE_BUTTON_TEXT = '+ Add card';
 
 const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
-    let PostButton: JSX.Element;
+    const [modeSwitch, changeMode] = useState(false);
+
     let PrepareButton: JSX.Element
     let buttonRole = props.cardname.toLocaleLowerCase();
-    let inputdisplay = true;
+    let displayState = 'none';
+    let postButtonClass = '';
+
+    if (modeSwitch){
+        postButtonClass = 'post-button';
+        displayState = 'block';
+    }
 
     PrepareButton = 
         <button 
-            onClick={storage.buttonHandler}
+            onClick = {() => changeMode(!modeSwitch)}
             data-role = {buttonRole}
-            className = 'canvas-button'
+            className = {`canvas-button ${postButtonClass}`}
         >
-            {PREPARE_BUTTON_TEXT}
-        </button>
-
-    PostButton = 
-        <button
-            data-role = {buttonRole}
-            className = 'canvas-button post-button'
-        >
-            {POST_BUTTON_TEXT}
+            {modeSwitch ? POST_BUTTON_TEXT : PREPARE_BUTTON_TEXT}
         </button>
 
     return (
@@ -39,7 +39,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
             <div className = 'card-canvas'>
                 {props.children}
             </div>
-            <input className = 'card-name-input task-card' placeholder='Enter task name' />
+            <input className = 'card-name-input task-card' placeholder='Enter task name' style={{display: displayState}}/>
             {PrepareButton}
         </div>
     )
