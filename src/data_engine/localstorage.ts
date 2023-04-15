@@ -1,7 +1,4 @@
-import { FIRST_COLOUMN } from "../App";
-import { SECOND_COLOUMN } from "../App";
-import { THIRD_COLOUMN } from "../App";
-import { FOURTH_COLOUMN } from "../App";
+import { FIRST_COLOUMN, SECOND_COLOUMN, THIRD_COLOUMN, FOURTH_COLOUMN } from "../App";
 
 const ID_LIMIT = 1000;
 

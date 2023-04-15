@@ -39,7 +39,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
             <div className = 'card-canvas'>
                 {props.children}
             </div>
-            <input className = 'card-name-input task-card' placeholder='Enter task name' style={{display: displayState}}/>
+            <input className = 'card-name-input task-card' placeholder='Enter task name' style={{display: displayState}} />
             {PrepareButton}
         </div>
     )
