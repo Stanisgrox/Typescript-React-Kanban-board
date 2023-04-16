@@ -1,4 +1,5 @@
 import { FIRST_COLOUMN, SECOND_COLOUMN, THIRD_COLOUMN, FOURTH_COLOUMN } from "../App";
+import { previousCard } from "../components/card-block/card-block";
 
 const ID_LIMIT = 1000;
 
@@ -12,21 +13,30 @@ const storageStartup = () => {
     localStorage.setItem(FOURTH_COLOUMN.toLowerCase(), '[]');
 }
 
-const buttonHandler = (buttonRole: string, cardName?:string) =>{ 
+const buttonHandler = (buttonRole: string, cardName:string) =>{ 
     switch (buttonRole) {
         case FIRST_COLOUMN.toLowerCase():
-            if(cardName)cardCreator(cardName);
+            if (cardName) cardCreator(cardName);
         break;
         case SECOND_COLOUMN.toLowerCase():
-            alert('ready');
+            cardMover(buttonRole, cardName)
         break;
         case THIRD_COLOUMN.toLowerCase():
-            alert('in progress');
+            cardMover(buttonRole, cardName)
         break;
         case FOURTH_COLOUMN.toLowerCase():
-            alert('finished');
+            cardMover(buttonRole, cardName)
         break;
     }
+}
+
+//Функция удаления элемента из массива
+function removeItem<T>(arr: Array<T>, value: T): Array<T> { 
+    const index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
 }
 
 //Функция для записи  карточки
@@ -67,10 +77,19 @@ const getCardInfo  = (cardId: string) => {
     return cardData;
 }
 
+const cardMover = (currentCard:string, cardId:string) => {
+    let moveFrom = previousCard(currentCard).toLowerCase();
+    let keyDatabase = JSON.parse(localStorage.getItem(moveFrom.toLowerCase()) || '{}');
+    keyDatabase = removeItem(keyDatabase, Number(cardId));
+    //Удаление карточки из LocalStorage
+    localStorage.setItem(moveFrom, JSON.stringify(keyDatabase));
+    //Удаление старой карточки из UI или обновление предыдущего столбика
 
 
-const cardMover = (from:string, cardId:number) => {
-    
+    //Обновление массива новой колонки
+    keyDatabase = JSON.parse(localStorage.getItem(currentCard.toLowerCase()) || '{}');
+    keyDatabase.push(Number(cardId));
+    localStorage.setItem(currentCard.toLowerCase(), JSON.stringify(keyDatabase))
 }
 
 

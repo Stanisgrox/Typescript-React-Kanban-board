@@ -11,12 +11,12 @@ interface CardBlockProps {
 const POST_BUTTON_TEXT = 'Submit';
 const PREPARE_BUTTON_TEXT = '+ Add card';
 
-const previousCard = (currentCard: string | undefined) => {
+export const previousCard = (currentCard: string | undefined) => {
     switch (currentCard){
-        case FIRST_COLOUMN: return '';
-        case SECOND_COLOUMN: return FIRST_COLOUMN;
-        case THIRD_COLOUMN: return SECOND_COLOUMN;
-        case FOURTH_COLOUMN: return THIRD_COLOUMN;
+        case FIRST_COLOUMN.toLowerCase(): return '';
+        case SECOND_COLOUMN.toLowerCase(): return FIRST_COLOUMN.toLowerCase();
+        case THIRD_COLOUMN.toLowerCase(): return SECOND_COLOUMN.toLowerCase();
+        case FOURTH_COLOUMN.toLowerCase(): return THIRD_COLOUMN.toLowerCase();
     }
     return '';
 }
@@ -29,7 +29,7 @@ const buttonChecker = (triggered:boolean, input:boolean):boolean =>{
 
 const optionRender = (blockName:string): JSX.Element[] => {
     let cards: string[];
-    cards = storage.prepareCards(previousCard(blockName).toLowerCase())
+    cards = storage.prepareCards(previousCard(blockName.toLowerCase()))
     return cards.map(card => {
         let cardInfo = JSON.parse(localStorage.getItem(card) || '{}');
         return (
@@ -99,7 +99,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
     }
 
     return (
-        <div className='card-block'>
+        <div className='card-block' id = {props.cardname.toLowerCase()}>
             {props.cardname}
             <div className = 'card-canvas'>
                 <TaskCardWrapper cards = {storage.prepareCards(props.cardname.toLowerCase())} />
