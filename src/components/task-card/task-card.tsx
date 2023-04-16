@@ -10,6 +10,9 @@ const TaskCardWrapper: React.FC<Props> = ({ cards }) => {
 
     const renderCard = (): JSX.Element[] => {
         return cards.map(card => {
+            //Если в коллекции нет карточек, возвращает пустышку
+            if (cards[0] === ''){return(<div></div>)}
+            
             let cardInfo = JSON.parse(localStorage.getItem(card) || '{}');
             return (
                 <Link 
