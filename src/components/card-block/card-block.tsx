@@ -6,6 +6,8 @@ import { FIRST_COLOUMN, SECOND_COLOUMN, THIRD_COLOUMN, FOURTH_COLOUMN } from '..
 
 interface CardBlockProps {
     cardname: string
+    updater: React.Dispatch<React.SetStateAction<number>>
+    updateState: number
 }
 
 const POST_BUTTON_TEXT = 'Submit';
@@ -57,6 +59,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
                     if (modeSwitch){
                         storage.buttonHandler(buttonRole, cardName);
                         setName('');
+                        props.updater(props.updateState + 1);
                     }
                     changeMode(!modeSwitch); 
                 }

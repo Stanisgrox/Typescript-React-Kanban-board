@@ -83,9 +83,6 @@ const cardMover = (currentCard:string, cardId:string) => {
     keyDatabase = removeItem(keyDatabase, Number(cardId));
     //Удаление карточки из LocalStorage
     localStorage.setItem(moveFrom, JSON.stringify(keyDatabase));
-    //Удаление старой карточки из UI или обновление предыдущего столбика
-
-
     //Обновление массива новой колонки
     keyDatabase = JSON.parse(localStorage.getItem(currentCard.toLowerCase()) || '{}');
     keyDatabase.push(Number(cardId));
