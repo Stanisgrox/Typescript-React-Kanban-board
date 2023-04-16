@@ -3,17 +3,6 @@ import Header from './components/header/header';
 import * as storage from './data_engine/localstorage';
 import MainRouter from './components/router/router';
 
-/*
-export interface Cards {
-  card: {
-    id: number,
-    name: string,
-    description: string,
-    coloumn: string
-  }[]
-}
-*/
-
 //Конфигурация - названия групп карточек.
 export const FIRST_COLOUMN = 'Backlog';
 export const SECOND_COLOUMN = 'Ready';
