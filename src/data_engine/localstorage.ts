@@ -1,5 +1,6 @@
 import { FIRST_COLOUMN, SECOND_COLOUMN, THIRD_COLOUMN, FOURTH_COLOUMN } from "../App";
 import { previousCard } from "../components/card-block/card-block";
+import { getIDArray } from "./utils";
 
 const ID_LIMIT = 1000;
 
@@ -51,7 +52,7 @@ const cardCreator = (name: string) => {
     localStorage.setItem(newId.toString(),'{"name": "' + name +'", "description": "This task has no description"}');
 
     //В массив ID карточек backlog записывается ID новой карточки
-    let keyDatabase = JSON.parse(localStorage.getItem(FIRST_COLOUMN.toLowerCase()) || '{}');
+    let keyDatabase = getIDArray(FIRST_COLOUMN);
     keyDatabase.push(newId);
     localStorage.setItem(FIRST_COLOUMN.toLowerCase(), JSON.stringify(keyDatabase))
 }
@@ -79,18 +80,18 @@ const getCardInfo  = (cardId: string) => {
 
 const cardMover = (currentCard:string, cardId:string) => {
     let moveFrom = previousCard(currentCard).toLowerCase();
-    let keyDatabase = JSON.parse(localStorage.getItem(moveFrom.toLowerCase()) || '{}');
+    let keyDatabase = getIDArray(moveFrom);
     keyDatabase = removeItem(keyDatabase, Number(cardId));
     //Удаление карточки из LocalStorage
     localStorage.setItem(moveFrom, JSON.stringify(keyDatabase));
     //Обновление массива новой колонки
-    keyDatabase = JSON.parse(localStorage.getItem(currentCard.toLowerCase()) || '{}');
+    keyDatabase = getIDArray(currentCard);
     keyDatabase.push(Number(cardId));
     localStorage.setItem(currentCard.toLowerCase(), JSON.stringify(keyDatabase))
 }
 
 const finishedCounter = ():number => {
-    let finishedKeys = JSON.parse(localStorage.getItem(FOURTH_COLOUMN.toLowerCase()) || '{}');
+    let finishedKeys = getIDArray(FOURTH_COLOUMN);
     let counter: number =  0;
     finishedKeys.forEach(() => {
         counter++;
@@ -99,9 +100,9 @@ const finishedCounter = ():number => {
 }
 
 const activeCounter = ():number => {
-    let Keys1 = JSON.parse(localStorage.getItem(FIRST_COLOUMN.toLowerCase()) || '{}');
-    let Keys2 = JSON.parse(localStorage.getItem(SECOND_COLOUMN.toLowerCase()) || '{}');
-    let Keys3 = JSON.parse(localStorage.getItem(THIRD_COLOUMN.toLowerCase()) || '{}');
+    let Keys1 = getIDArray(FIRST_COLOUMN);
+    let Keys2 = getIDArray(SECOND_COLOUMN);
+    let Keys3 = getIDArray(THIRD_COLOUMN);
     let Keys =  Keys1.concat(Keys2,Keys3)
     let counter: number =  0;
     Keys.forEach(() => {
