@@ -4,4 +4,25 @@
     left: 0px;
     font-size: 18px;
     line-height: 21px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-leftbar{
+    margin-left: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-rightbar  {
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.footer-leftbar-counter{
+    margin-right: 36px;
 }

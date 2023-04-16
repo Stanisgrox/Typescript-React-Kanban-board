@@ -18,15 +18,15 @@ const Footer: React.FC<FooterProps> = (props: FooterProps) => {
 
     return (
         <footer className='footer navigation'>
-            <div>
-                <div>
+            <div className = 'footer-leftbar'>
+                <div className='footer-leftbar-counter'>
                     Active tasks: {active}
                 </div>
-                <div>
+                <div className='footer-leftbar-counter'>
                     Finished tasks: {finished}
                 </div>
             </div>
-            <div>
+            <div className =  'footer-rightbar'>
                 Kanban board by {props.author}, {props.year}
             </div>
         </footer>
