@@ -28,6 +28,14 @@
     margin-top: 12px;
 }
 
+.canvas-button:disabled:hover {
+    background-color: #FFFFFF00;
+}
+
+.canvas-button:disabled {
+    cursor: auto;
+}
+
 .post-button {
     background-color: #0079BF;
     color: #FFF;
@@ -47,4 +55,13 @@
 
 .post-button:hover{
     background-color: #004f7c;
+}
+
+.post-button:disabled{
+    background-color: #BF1200;
+    cursor: auto;
+}
+
+.post-button:disabled:hover{
+    background-color: #BF1200;
 }
