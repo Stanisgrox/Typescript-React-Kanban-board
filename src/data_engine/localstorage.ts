@@ -68,10 +68,10 @@ const getCardInfo  = (cardId: string) => {
 }
 
 
-/*
+
 const cardMover = (from:string, cardId:number) => {
     
 }
-*/
+
 
 export {storageStartup, buttonHandler, prepareCards, getCardInfo};

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './card-block.css';
 import * as storage from '../../data_engine/localstorage';
 import TaskCardWrapper from '../task-card/task-card';
-import { FIRST_COLOUMN } from '../../App';
+import { FIRST_COLOUMN, SECOND_COLOUMN, THIRD_COLOUMN, FOURTH_COLOUMN } from '../../App';
 
 interface CardBlockProps {
     cardname: string
@@ -11,12 +11,34 @@ interface CardBlockProps {
 const POST_BUTTON_TEXT = 'Submit';
 const PREPARE_BUTTON_TEXT = '+ Add card';
 
+const previousCard = (currentCard: string | undefined) => {
+    switch (currentCard){
+        case FIRST_COLOUMN: return '';
+        case SECOND_COLOUMN: return FIRST_COLOUMN;
+        case THIRD_COLOUMN: return SECOND_COLOUMN;
+        case FOURTH_COLOUMN: return THIRD_COLOUMN;
+    }
+    return '';
+}
+
 const buttonChecker = (triggered:boolean, input:boolean):boolean =>{
     if (!triggered) return false;
     if (!input) return true;
     return false;
 }
 
+const optionRender = (blockName:string): JSX.Element[] => {
+    let cards: string[];
+    cards = storage.prepareCards(previousCard(blockName).toLowerCase())
+    return cards.map(card => {
+        let cardInfo = JSON.parse(localStorage.getItem(card) || '{}');
+        return (
+            <option value={card} key = {card}>
+                {cardInfo.name}
+            </option>
+        )
+    })
+}
 
 const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
     const [modeSwitch, changeMode] = useState(false);
@@ -64,7 +86,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
         MainInput = 
             <select 
                 className = 'card-name-input task-card' 
-                style={{display: 'block'}}
+                style={{display: modeSwitch ? 'block' : 'none'}}
                 onInput={e  => {
                     setName(e.currentTarget.value);
                     if (e.currentTarget.value !== '') {setReady(true)}
@@ -72,9 +94,7 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
                 }}
             >
                 <option value={''}></option>
-                <option value={'A'}>A</option>
-                <option value={'B'}>B</option>
-                <option value={'C'}>C</option>
+                {optionRender(props.cardname)}
             </select>
     }
 
