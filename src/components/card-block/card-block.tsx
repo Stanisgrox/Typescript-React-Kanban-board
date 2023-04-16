@@ -62,7 +62,15 @@ const CardBlock: React.FC<CardBlockProps> = (props:CardBlockProps) => {
             />
     } else {
         MainInput = 
-            <select className = 'card-name-input task-card' style={{display: 'block'}}>
+            <select 
+                className = 'card-name-input task-card' 
+                style={{display: 'block'}}
+                onInput={e  => {
+                    setName(e.currentTarget.value);
+                    if (e.currentTarget.value !== '') {setReady(true)}
+                    if (!e.currentTarget.value) {setReady(false)}
+                }}
+            >
                 <option value={''}></option>
                 <option value={'A'}>A</option>
                 <option value={'B'}>B</option>
