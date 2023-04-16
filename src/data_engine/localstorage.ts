@@ -98,4 +98,17 @@ const finishedCounter = ():number => {
     return counter;
 }
 
-export {storageStartup, buttonHandler, prepareCards, getCardInfo, finishedCounter};
+const activeCounter = ():number => {
+    let Keys1 = JSON.parse(localStorage.getItem(FIRST_COLOUMN.toLowerCase()) || '{}');
+    let Keys2 = JSON.parse(localStorage.getItem(SECOND_COLOUMN.toLowerCase()) || '{}');
+    let Keys3 = JSON.parse(localStorage.getItem(THIRD_COLOUMN.toLowerCase()) || '{}');
+    let Keys =  Keys1.concat(Keys2,Keys3)
+    let counter: number =  0;
+    Keys.forEach(() => {
+        counter++;
+    });
+    return counter;
+}
+
+
+export {storageStartup, buttonHandler, prepareCards, getCardInfo, finishedCounter, activeCounter};

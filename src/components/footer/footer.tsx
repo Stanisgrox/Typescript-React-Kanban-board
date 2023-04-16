@@ -12,13 +12,15 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = (props: FooterProps) => {
     let finished: number;
+    let active : number;
     finished = storage.finishedCounter()
+    active = storage.activeCounter();
 
     return (
         <footer className='footer navigation'>
             <div>
                 <div>
-                    Active tasks: N
+                    Active tasks: {active}
                 </div>
                 <div>
                     Finished tasks: {finished}
