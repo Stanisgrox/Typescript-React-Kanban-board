@@ -89,5 +89,13 @@ const cardMover = (currentCard:string, cardId:string) => {
     localStorage.setItem(currentCard.toLowerCase(), JSON.stringify(keyDatabase))
 }
 
+const finishedCounter = ():number => {
+    let finishedKeys = JSON.parse(localStorage.getItem(FOURTH_COLOUMN.toLowerCase()) || '{}');
+    let counter: number =  0;
+    finishedKeys.forEach(() => {
+        counter++;
+    });
+    return counter;
+}
 
-export {storageStartup, buttonHandler, prepareCards, getCardInfo};
+export {storageStartup, buttonHandler, prepareCards, getCardInfo, finishedCounter};

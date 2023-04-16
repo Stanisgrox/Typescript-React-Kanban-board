@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import * as storage from './data_engine/localstorage';
 import MainRouter from './components/router/router';
@@ -29,7 +28,6 @@ function App() {
     <div className="App">
       <Header />
       <MainRouter />
-      <Footer active={1} finished={1} author = '<NAME>' year={2023} />
     </div>
   );
 }
