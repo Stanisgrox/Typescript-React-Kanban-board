@@ -40,5 +40,6 @@ body {
 @media (max-width: 1134px) {
   .card-wrapper{
     flex-direction: column;
+    justify-content: start;
   }
 }
