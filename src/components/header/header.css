@@ -47,3 +47,9 @@
 .profile-dropdown-menu-link:first-child{
     margin-top: 0px;
 }
+
+@media (max-width: 440px) {
+    .logo{
+        display: none;
+    }
+}

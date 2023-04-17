@@ -32,3 +32,13 @@ body {
   width: 100vw;
   height: calc(100vh - 110px);
 }
+
+/*
+  Мобильная версия
+*/
+
+@media (max-width: 1134px) {
+  .card-wrapper{
+    flex-direction: column;
+  }
+}

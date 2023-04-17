@@ -26,3 +26,9 @@
 .footer-leftbar-counter{
     margin-right: 36px;
 }
+
+@media (max-width: 440px) {
+    .footer-rightbar{
+        display: none;
+    }
+}

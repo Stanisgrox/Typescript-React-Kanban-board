@@ -46,9 +46,10 @@
 }
 
 .card-name-input{
+    box-sizing: border-box;
     display: none;
     border: none;
-    width: calc(100% - 16px);
+    width: 100%;
 }
 
 .canvas-button:hover{
@@ -83,4 +84,26 @@
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #CBCBCB;
+}
+
+/*
+    Адаптация под  планшеты
+*/
+
+@media (max-width: 1214px) {
+    .card-block{
+        margin-left: 1px;
+        margin-right: 1px;
+    }
+}
+
+/*
+  Мобильная версия
+*/
+
+@media (max-width: 1134px) {
+    .card-block{
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
