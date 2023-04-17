@@ -1,5 +1,5 @@
 .card-block {
-    margin-right: 24px;
+    margin-right: 12px;
     background-color: #EBECF0;
     color: #000;
     border-radius: 10px;
@@ -9,9 +9,9 @@
     padding-left: 12px;
     padding-right: 12px;
     margin-top: 20px;
-    margin-left: 19px;
+    margin-left: 12px;
     width: 22vw;
-    min-width: 282px;
+    min-width: 258px;
     overflow-y: auto;
     max-height: calc(100vh - 200px);
 }
