@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './header.css';
 import pfp from '../../images/pfp.svg';
-import chevron from '../../images/chevronD.svg';
+import chevronD from '../../images/chevronD.svg';
+import chevronU from '../../images/chevronU.svg';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+    
+    const [menuActive, activateMenu] = useState(false)
+
     return (
         <header className = 'header navigation'>
                 <Link 
@@ -16,22 +20,30 @@ const Header = () => {
                     </div>   
                 </Link>
             <div className = 'profile'>
-                <button className = 'profile-button'>
+                <button 
+                    className = 'profile-button'
+                    onClick={()  => {
+                        activateMenu(!menuActive)
+                    }}
+                >
                     <img 
                         src = {pfp} 
                         alt = 'profile avatar' 
                     />
                     <img 
-                        src = {chevron} 
+                        src = {menuActive ? chevronU : chevronD} 
                         alt = 'open profile' 
                     />
                 </button>
-                <div className = 'profile-dropdown'>
-                    <ul>
-                        <li>
+                <div 
+                    className = 'profile-dropdown'
+                    style={{display: menuActive ? 'block' : 'none'}}    
+                >
+                    <ul className = 'profile-dropdown-menu'>
+                        <li className = 'profile-dropdown-menu-link'>
                             Profile
                         </li>
-                        <li>
+                        <li className = 'profile-dropdown-menu-link'>
                             Log Out
                         </li>
                     </ul>

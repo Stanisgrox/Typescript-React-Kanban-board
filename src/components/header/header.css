@@ -25,4 +25,25 @@
     background-color: #FFF;
     color: #000;
     font-size: 14px;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 7px;
+    width: 140px;
+    position: absolute;
+    right: 10px
+}
+
+.profile-dropdown-menu{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown-menu-link{
+    margin-top: 8px;
+}
+
+.profile-dropdown-menu-link:first-child{
+    margin-top: 0px;
 }

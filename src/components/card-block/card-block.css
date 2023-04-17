@@ -12,6 +12,8 @@
     margin-left: 19px;
     width: 22vw;
     min-width: 282px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
 }
 
 .canvas-button {
@@ -64,4 +66,21 @@
 
 .post-button:disabled:hover{
     background-color: #BF1200;
+}
+
+/*
+    Кастомизация скроллбара
+*/
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #CBCBCB;
 }
