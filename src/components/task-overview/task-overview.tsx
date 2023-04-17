@@ -27,9 +27,9 @@ const TaskOverview = () => {
                             />
                         </button>
                     </Link>
-                    <p className="overview-card-text">
-                        {cardData.description}
-                    </p>
+                    <textarea className="overview-card-text" defaultValue={cardData.description}>
+                        
+                    </textarea>
                 </div>
             </main>
             <Footer author = '<NAME>' year={2023} />

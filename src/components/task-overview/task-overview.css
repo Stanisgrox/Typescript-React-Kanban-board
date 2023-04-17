@@ -24,6 +24,21 @@
 .overview-card-text{
     padding-left: 30px;
     margin-top: 35px;
+    resize: none;
+    font-family:'Roboto',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+    width: 60%;
+    height: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.overview-card-text:focus{
+    outline-width: 0;
+    cursor: auto;
 }
 
 .overview-card-close{
