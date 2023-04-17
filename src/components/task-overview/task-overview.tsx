@@ -23,13 +23,18 @@ const TaskOverview = () => {
                         <button className="overview-card-close">
                             <img 
                                 src = {cross} 
-                                alt = 'profile avatar' 
+                                alt = 'close details' 
                             />
                         </button>
                     </Link>
-                    <textarea className="overview-card-text" defaultValue={cardData.description}>
-                        
-                    </textarea>
+                    <textarea 
+                        className="overview-card-text" 
+                        defaultValue={cardData.description}
+                        onInput={e  => {
+                            cardData.description = e.currentTarget.value;
+                            localStorage.setItem(location.state,JSON.stringify(cardData));
+                        }}
+                    />
                 </div>
             </main>
             <Footer author = '<NAME>' year={2023} />
